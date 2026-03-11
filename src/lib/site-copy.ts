@@ -20,8 +20,8 @@ export const siteCopy = {
   },
 
   hero: {
-    kicker: "Stay House • hosted home stay",
-    title: "A different kind of booking story.",
+    kicker: "",
+    title: "Book You're stay in Cape Town",
     intro:
       "Stay House is a hosted home stay in Cape Town built around comfort, routine, and real hospitality. Guests can choose between three distinct rooms and enjoy shared home amenities, weekly care, and a warmer way to stay.",
     primaryCta: "Start booking",
