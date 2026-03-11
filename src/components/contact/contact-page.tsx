@@ -60,53 +60,47 @@ export function ContactPage() {
               </p>
             </div>
 
-            <div
-              className="retro-panel-thick retro-block-blue p-5 md:p-6"
-              data-card
-            >
-              <p className="retro-kicker mb-3 text-[var(--color-ink)]">
+            <div className="retro-panel-thick p-5 md:p-6" data-card>
+              <p className="retro-kicker mb-3 text-[var(--color-olive-soft)]">
                 direct details
               </p>
 
               <div className="grid gap-0 border-t border-black/15">
                 <div className="border-b border-black/15 py-4">
-                  <p className="retro-kicker text-[var(--color-ink)]/65">
+                  <p className="retro-kicker text-[var(--color-olive-soft)]">
                     email
                   </p>
-                  <p className="mt-2 text-lg text-[var(--color-ink)]">
+                  <p className="mt-2 text-lg text-[var(--color-olive)]">
                     {siteCopy.contact.email}
                   </p>
                 </div>
 
                 <div className="border-b border-black/15 py-4">
-                  <p className="retro-kicker text-[var(--color-ink)]/65">
+                  <p className="retro-kicker text-[var(--color-olive-soft)]">
                     phone
                   </p>
-                  <p className="mt-2 text-lg text-[var(--color-ink)]">
+                  <p className="mt-2 text-lg text-[var(--color-olive)]">
                     {siteCopy.contact.phone}
                   </p>
                 </div>
 
                 <div className="py-4">
-                  <p className="retro-kicker text-[var(--color-ink)]/65">
+                  <p className="retro-kicker text-[var(--color-olive-soft)]">
                     location
                   </p>
-                  <p className="mt-2 text-lg text-[var(--color-ink)]">
+                  <p className="mt-2 text-lg text-[var(--color-olive)]">
                     {siteCopy.contact.location}
                   </p>
                 </div>
               </div>
             </div>
 
-            <div
-              className="retro-panel-thick retro-block-clay p-5 md:p-6 text-white"
-              data-card
-            >
-              <p className="retro-kicker mb-3 text-white/70">
+            <div className="retro-panel p-5 md:p-6" data-card>
+              <p className="retro-kicker mb-3 text-[var(--color-olive-soft)]">
                 what you can ask
               </p>
 
-              <div className="grid gap-0 border-t border-white/20">
+              <div className="grid gap-0 border-t border-black/15">
                 {[
                   "Which room fits your stay best",
                   "Long-stay and student-friendly options",
@@ -116,7 +110,7 @@ export function ContactPage() {
                 ].map((item) => (
                   <div
                     key={item}
-                    className="border-b border-white/20 py-4 text-base leading-7 text-white/85 last:border-b-0"
+                    className="border-b border-black/15 py-4 text-base leading-7 text-[var(--color-olive)]/82 last:border-b-0"
                   >
                     {item}
                   </div>
@@ -141,16 +135,8 @@ export function ContactPage() {
               </p>
 
               <div className="flex flex-wrap gap-3">
-                {enquiryTypes.map((type, index) => {
+                {enquiryTypes.map((type) => {
                   const isActive = activeType === type;
-                  const toneClass =
-                    index % 4 === 0
-                      ? "retro-block-blue"
-                      : index % 4 === 1
-                        ? "retro-block-yellow"
-                        : index % 4 === 2
-                          ? "retro-block-olive"
-                          : "retro-block-clay text-white";
 
                   return (
                     <button
@@ -160,7 +146,7 @@ export function ContactPage() {
                       className={clsx(
                         "border px-4 py-3 text-sm uppercase tracking-[0.14em] transition-colors duration-200",
                         isActive
-                          ? `border-black/15 ${toneClass}`
+                          ? "border-black/15 retro-block-blue text-[var(--color-ink)]"
                           : "border-black/10 bg-transparent text-[var(--color-olive-soft)] hover:bg-black/[0.03] hover:text-[var(--color-olive)]",
                       )}
                     >
@@ -275,7 +261,10 @@ export function ContactPage() {
               </h2>
             </div>
 
-            <div className="retro-panel-thick retro-block-blue p-5 md:p-6">
+            <div
+              className="retro-panel-thick retro-block-blue p-5 md:p-6"
+              data-card
+            >
               <p className="body-copy max-w-2xl text-[var(--color-ink)]/82">
                 If you are still deciding, explore the rooms, read about the
                 stay, or move into booking once you know what fits best.

@@ -12,74 +12,99 @@ const footerLinks = [
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-black/8 pt-10">
+    <footer className="border-t border-black/10 retro-paper pt-10">
       <div className="container-shell">
-        <div className="grid gap-10 border-b border-black/8 pb-10 xl:grid-cols-[0.95fr_0.65fr_0.4fr] xl:gap-12">
-          <div>
-            <p className="eyebrow mb-4 text-[var(--color-olive-soft)]">
-              {siteCopy.brand.name}
-            </p>
+        <div className="retro-panel-thick retro-block-yellow p-6 md:p-8">
+          <div className="grid gap-8 xl:grid-cols-[0.95fr_0.65fr_0.4fr] xl:gap-12">
+            <div>
+              <p className="retro-kicker mb-4 text-[var(--color-ink)]/70">
+                final chapter
+              </p>
 
-            <h2 className="max-w-[10ch] text-[clamp(2.4rem,4vw,4.4rem)] leading-[0.96] tracking-[-0.05em] text-[var(--color-olive)]">
-              Home comfort, boutique presentation.
-            </h2>
+              <h2 className="retro-subtitle retro-ink max-w-[10ch]">
+                Home comfort, boutique presentation.
+              </h2>
 
-            <p className="body-copy mt-5 max-w-2xl">
-              {siteCopy.footer.statement}
-            </p>
-          </div>
-
-          <div>
-            <p className="eyebrow mb-4 text-[var(--color-olive-soft)]">
-              Explore
-            </p>
-
-            <div className="grid border-t border-black/8">
-              {footerLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="border-b border-black/8 py-3 text-base text-[var(--color-olive)] transition-colors duration-200 hover:bg-black/[0.025]"
-                >
-                  {link.label}
-                </Link>
-              ))}
+              <p className="body-copy mt-5 max-w-2xl text-[var(--color-ink)]/82">
+                {siteCopy.footer.statement}
+              </p>
             </div>
-          </div>
 
-          <div>
-            <p className="eyebrow mb-4 text-[var(--color-olive-soft)]">
-              Contact
-            </p>
+            <div>
+              <p className="retro-kicker mb-4 text-[var(--color-ink)]/70">
+                index
+              </p>
 
-            <div className="grid gap-0 border-t border-black/8">
-              <div className="border-b border-black/8 py-3">
-                <p className="text-sm uppercase tracking-[0.14em] text-[var(--color-olive-soft)]">
-                  Email
-                </p>
-                <p className="mt-1 text-base text-[var(--color-olive)]">
-                  {siteCopy.contact.email}
-                </p>
-              </div>
-
-              <div className="border-b border-black/8 py-3">
-                <p className="text-sm uppercase tracking-[0.14em] text-[var(--color-olive-soft)]">
-                  Phone
-                </p>
-                <p className="mt-1 text-base text-[var(--color-olive)]">
-                  {siteCopy.contact.phone}
-                </p>
-              </div>
-
-              <div className="py-3">
-                <p className="text-sm uppercase tracking-[0.14em] text-[var(--color-olive-soft)]">
-                  Location
-                </p>
-                <p className="mt-1 text-base text-[var(--color-olive)]">
-                  {siteCopy.contact.location}
-                </p>
+              <div className="grid border-t border-black/15">
+                {footerLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="border-b border-black/15 py-3 text-base text-[var(--color-ink)] transition-colors duration-200 hover:bg-black/[0.03]"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
               </div>
             </div>
+
+            <div>
+              <p className="retro-kicker mb-4 text-[var(--color-ink)]/70">
+                contact
+              </p>
+
+              <div className="grid gap-0 border-t border-black/15">
+                <div className="border-b border-black/15 py-3">
+                  <p className="retro-kicker text-[var(--color-ink)]/65">
+                    email
+                  </p>
+                  <p className="mt-1 text-base text-[var(--color-ink)]">
+                    {siteCopy.contact.email}
+                  </p>
+                </div>
+
+                <div className="border-b border-black/15 py-3">
+                  <p className="retro-kicker text-[var(--color-ink)]/65">
+                    phone
+                  </p>
+                  <p className="mt-1 text-base text-[var(--color-ink)]">
+                    {siteCopy.contact.phone}
+                  </p>
+                </div>
+
+                <div className="py-3">
+                  <p className="retro-kicker text-[var(--color-ink)]/65">
+                    location
+                  </p>
+                  <p className="mt-1 text-base text-[var(--color-ink)]">
+                    {siteCopy.contact.location}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="retro-marquee mt-6">
+          <div className="retro-marquee-track">
+            {Array.from({ length: 2 }).map((_, i) => (
+              <div key={i} className="flex">
+                {[
+                  siteCopy.brand.name,
+                  "Hosted home stay",
+                  "Shared home comfort",
+                  "Cape Town",
+                  "Direct booking enquiry",
+                  "Student-friendly living",
+                  "Pet-friendly approval",
+                  "Discounted guest laundry",
+                ].map((item) => (
+                  <span key={`${i}-${item}`} className="retro-marquee-item">
+                    {item}
+                  </span>
+                ))}
+              </div>
+            ))}
           </div>
         </div>
 
