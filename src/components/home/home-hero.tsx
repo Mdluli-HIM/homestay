@@ -2,142 +2,143 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { siteCopy } from "@/lib/site-copy";
 
 const heroImage =
   "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=1800&q=80";
 
 export function HomeHero() {
   return (
-    <section className="flow-section pt-32" data-flow-section>
+    <section className="flow-section pt-32 retro-paper" data-flow-section>
       <div className="container-shell">
-        <div className="grid gap-10 border-b border-black/8 pb-10 xl:grid-cols-[0.9fr_1.1fr] xl:items-end">
+        <div className="grid gap-6 border-b border-black/10 pb-8 xl:grid-cols-[0.9fr_1.1fr]">
           <div data-reveal>
-            <p className="eyebrow mb-4 text-[var(--color-olive-soft)]">
-              premium hosted accommodation
+            <p className="retro-kicker mb-4 text-[var(--color-olive-soft)]">
+              {siteCopy.hero.kicker}
             </p>
-
-            <h1 className="max-w-[8ch] text-[clamp(4rem,8vw,7.4rem)] leading-[0.9] tracking-[-0.06em] text-[var(--color-olive)]">
-              Stay beautifully. Live comfortably.
+            <h1 className="retro-title retro-ink max-w-[8ch]">
+              {siteCopy.hero.title}
             </h1>
           </div>
 
-          <p className="body-copy max-w-2xl xl:justify-self-end" data-reveal>
-            A hosted home-stay experience designed for short stays, long stays,
-            student-friendly living, and pet-friendly flexibility — with shared
-            home comfort, weekly care, and discounted on-site laundry for
-            guests.
-          </p>
+          <div className="flex items-end" data-reveal>
+            <p className="body-copy max-w-2xl">{siteCopy.hero.intro}</p>
+          </div>
         </div>
 
-        <div className="grid gap-8 py-8 xl:grid-cols-[1.05fr_0.95fr] xl:gap-10">
-          <div className="grid gap-8" data-reveal>
+        <div className="mt-6 grid gap-3 lg:grid-cols-[1.08fr_0.92fr]">
+          <div className="grid gap-3">
             <div
-              className="grid gap-4 border-b border-black/8 pb-8 md:grid-cols-3"
-              data-line-reveal
+              className="retro-panel-thick retro-block-yellow p-5 md:p-6"
+              data-card
             >
-              <div className="border-t border-black/8 pt-4">
-                <p className="eyebrow mb-2 text-[var(--color-olive-soft)]">
+              <p className="retro-kicker mb-3 text-[var(--color-ink)]">
+                chapter 01
+              </p>
+              <h2 className="retro-subtitle retro-ink max-w-[11ch]">
+                Hosted comfort with a calmer, more personal way to stay.
+              </h2>
+            </div>
+
+            <div
+              className="retro-photo-frame min-h-[22rem] lg:min-h-[34rem]"
+              data-soft-image
+            >
+              <Image
+                src={heroImage}
+                alt="Hosted home interior"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1280px) 100vw, 56vw"
+                priority
+                loading="eager"
+              />
+            </div>
+          </div>
+
+          <div className="grid gap-3">
+            <div className="retro-panel-thick p-5 md:p-6" data-card>
+              <p className="retro-kicker mb-3 text-[var(--color-olive-soft)]">
+                what makes this different
+              </p>
+
+              <div className="grid gap-0 border-t border-black/15">
+                {[
+                  "Shared home comfort",
+                  "Weekly cleaning support",
+                  "Student-friendly living",
+                  "Pet-friendly approval",
+                  "Discounted guest laundry",
+                ].map((item) => (
+                  <div
+                    key={item}
+                    className="border-b border-black/15 py-4 text-lg leading-7 text-[var(--color-ink)] last:border-b-0"
+                  >
+                    {item}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="grid gap-3 md:grid-cols-2">
+              <div className="retro-panel p-4" data-card>
+                <p className="retro-kicker mb-2 text-[var(--color-olive-soft)]">
                   stay types
                 </p>
-                <p className="text-lg leading-7 text-[var(--color-olive)]">
+                <p className="text-lg leading-7 text-[var(--color-ink)]">
                   Short stay, long stay, student-friendly
                 </p>
               </div>
 
-              <div className="border-t border-black/8 pt-4">
-                <p className="eyebrow mb-2 text-[var(--color-olive-soft)]">
+              <div className="retro-panel p-4" data-card>
+                <p className="retro-kicker mb-2 text-[var(--color-olive-soft)]">
                   home access
                 </p>
-                <p className="text-lg leading-7 text-[var(--color-olive)]">
+                <p className="text-lg leading-7 text-[var(--color-ink)]">
                   Kitchen, dishes, bathroom, and shared amenities
                 </p>
               </div>
-
-              <div className="border-t border-black/8 pt-4">
-                <p className="eyebrow mb-2 text-[var(--color-olive-soft)]">
-                  guest benefit
-                </p>
-                <p className="text-lg leading-7 text-[var(--color-olive)]">
-                  Discounted on-site laundry
-                </p>
-              </div>
             </div>
 
-            <div className="grid gap-8 md:grid-cols-[0.82fr_1.18fr] md:items-end">
-              <div>
-                <p className="eyebrow mb-4 text-[var(--color-olive-soft)]">
-                  direct booking
-                </p>
-                <p className="max-w-[14ch] text-[clamp(2.2rem,3.8vw,3.8rem)] leading-[0.96] tracking-[-0.04em] text-[var(--color-olive)]">
-                  A calmer and clearer way to book your stay.
-                </p>
-              </div>
+            <div className="retro-panel-thick p-5 md:p-6" data-card>
+              <p className="retro-kicker mb-3 retro-accent-text">chapter 02</p>
+              <p className="text-2xl leading-tight text-[var(--color-olive)]">
+                Book your room like you’re entering the next chapter.
+              </p>
 
-              <div className="flex flex-wrap gap-3 md:justify-end">
+              <div className="mt-6 flex flex-wrap gap-3">
                 <Link href="/booking" className="button-primary">
-                  Check availability
+                  {siteCopy.hero.primaryCta}
                 </Link>
                 <Link href="/rooms" className="button-secondary">
-                  Explore rooms
+                  {siteCopy.hero.secondaryCta}
                 </Link>
               </div>
             </div>
-          </div>
-
-          <div
-            className="frame-media min-h-[28rem] xl:min-h-[40rem]"
-            data-card
-            data-parallax-wrap
-          >
-            <Image
-              src={heroImage}
-              alt="Hosted home interior"
-              fill
-              data-parallax
-              className="object-cover"
-              sizes="(max-width: 1280px) 100vw, 52vw"
-              priority
-              loading="eager"
-            />
           </div>
         </div>
 
-        <div
-          className="grid gap-4 border-t border-black/8 py-6 md:grid-cols-[1fr_1fr_0.8fr_0.8fr_auto]"
-          data-reveal
-          data-line-reveal
-        >
-          <div className="border border-black/8 px-4 py-4">
-            <p className="eyebrow mb-1 text-[var(--color-olive-soft)]">
-              check in
-            </p>
-            <p className="text-[var(--color-olive)]">Select date</p>
+        <div className="retro-marquee mt-6" data-reveal>
+          <div className="retro-marquee-track">
+            {Array.from({ length: 2 }).map((_, i) => (
+              <div key={i} className="flex">
+                {[
+                  "Hosted home stay",
+                  "Shared kitchen access",
+                  "Weekly cleaning",
+                  "Fresh linen",
+                  "Student-friendly",
+                  "Pet-friendly by approval",
+                  "Discounted on-site laundry",
+                  "Cape Town comfort",
+                ].map((item) => (
+                  <span key={`${i}-${item}`} className="retro-marquee-item">
+                    {item}
+                  </span>
+                ))}
+              </div>
+            ))}
           </div>
-
-          <div className="border border-black/8 px-4 py-4">
-            <p className="eyebrow mb-1 text-[var(--color-olive-soft)]">
-              check out
-            </p>
-            <p className="text-[var(--color-olive)]">Select date</p>
-          </div>
-
-          <div className="border border-black/8 px-4 py-4">
-            <p className="eyebrow mb-1 text-[var(--color-olive-soft)]">
-              guests
-            </p>
-            <p className="text-[var(--color-olive)]">1–3 guests</p>
-          </div>
-
-          <div className="border border-black/8 px-4 py-4">
-            <p className="eyebrow mb-1 text-[var(--color-olive-soft)]">
-              stay type
-            </p>
-            <p className="text-[var(--color-olive)]">Short / Long stay</p>
-          </div>
-
-          <Link href="/booking" className="button-primary min-h-[72px] w-full">
-            Start booking
-          </Link>
         </div>
       </div>
     </section>

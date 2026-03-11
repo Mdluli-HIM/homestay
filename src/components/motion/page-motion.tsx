@@ -1,7 +1,7 @@
 "use client";
 
 import { ReactNode, useRef } from "react";
-import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
+import { gsap, useGSAP } from "@/lib/gsap";
 
 type PageMotionProps = {
   children: ReactNode;
@@ -31,13 +31,8 @@ export function PageMotion({ children, className }: PageMotionProps) {
         scope.current,
       );
 
-      const parallaxItems = gsap.utils.toArray<HTMLElement>(
-        "[data-parallax]",
-        scope.current,
-      );
-
-      const lineItems = gsap.utils.toArray<HTMLElement>(
-        "[data-line-reveal]",
+      const imageItems = gsap.utils.toArray<HTMLElement>(
+        "[data-soft-image]",
         scope.current,
       );
 
@@ -46,13 +41,13 @@ export function PageMotion({ children, className }: PageMotionProps) {
           item,
           {
             autoAlpha: 0,
-            y: 36,
+            y: 26,
           },
           {
             autoAlpha: 1,
             y: 0,
-            duration: 0.95,
-            ease: "power3.out",
+            duration: 0.8,
+            ease: "power2.out",
             scrollTrigger: {
               trigger: item,
               start: "top 88%",
@@ -67,13 +62,13 @@ export function PageMotion({ children, className }: PageMotionProps) {
           item,
           {
             autoAlpha: 0,
-            y: 24,
+            y: 18,
           },
           {
             autoAlpha: 1,
             y: 0,
-            duration: 0.8,
-            delay: Math.min(index * 0.03, 0.18),
+            duration: 0.65,
+            delay: Math.min(index * 0.025, 0.12),
             ease: "power2.out",
             scrollTrigger: {
               trigger: item,
@@ -84,53 +79,26 @@ export function PageMotion({ children, className }: PageMotionProps) {
         );
       });
 
-      parallaxItems.forEach((item) => {
-        const trigger =
-          item.closest("[data-parallax-wrap]") instanceof HTMLElement
-            ? item.closest("[data-parallax-wrap]")
-            : item;
-
+      imageItems.forEach((item) => {
         gsap.fromTo(
           item,
           {
-            scale: 1.06,
-            yPercent: -6,
+            scale: 1.035,
+            autoAlpha: 0.92,
           },
           {
             scale: 1,
-            yPercent: 6,
-            ease: "none",
-            scrollTrigger: {
-              trigger,
-              start: "top bottom",
-              end: "bottom top",
-              scrub: 1,
-            },
-          },
-        );
-      });
-
-      lineItems.forEach((item) => {
-        gsap.fromTo(
-          item,
-          {
-            scaleX: 0,
-            transformOrigin: "left center",
-          },
-          {
-            scaleX: 1,
+            autoAlpha: 1,
             duration: 0.9,
             ease: "power2.out",
             scrollTrigger: {
               trigger: item,
-              start: "top 94%",
+              start: "top 90%",
               once: true,
             },
           },
         );
       });
-
-      ScrollTrigger.refresh();
     },
     { scope },
   );

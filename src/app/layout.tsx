@@ -3,6 +3,7 @@ import { Cormorant_Garamond, Manrope } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
+import { siteCopy } from "@/lib/site-copy";
 
 const headingFont = Cormorant_Garamond({
   subsets: ["latin"],
@@ -16,9 +17,8 @@ const bodyFont = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "Stay House",
-  description:
-    "Premium hosted home-stay accommodation for short stays, long stays, students, and pet-friendly living.",
+  title: siteCopy.meta.title,
+  description: siteCopy.meta.description,
 };
 
 export default function RootLayout({

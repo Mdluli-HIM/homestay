@@ -6,6 +6,8 @@ import clsx from "clsx";
 import { useMemo, useState } from "react";
 import { roomFilters, rooms } from "@/lib/placeholder-data";
 
+const toneClasses = ["retro-block-blue", "retro-block-yellow", "", ""];
+
 export function RoomsIndex() {
   const [activeFilter, setActiveFilter] = useState("all");
 
@@ -20,229 +22,287 @@ export function RoomsIndex() {
   }, [activeFilter]);
 
   return (
-    <section className="flow-section pt-32" data-flow-section>
+    <main className="flow-section pt-32 retro-paper" data-flow-section>
       <div className="container-shell">
-        <header
-          className="grid gap-10 border-b border-black/8 pb-10 xl:grid-cols-[0.9fr_1.1fr]"
+        <section
+          className="grid gap-8 border-b border-black/10 pb-8 lg:grid-cols-[0.9fr_1.1fr]"
           data-reveal
         >
           <div>
-            <p className="eyebrow mb-4 text-[var(--color-olive-soft)]">
-              rooms collection
+            <p className="retro-kicker mb-4 text-[var(--color-olive-soft)]">
+              chapter 14 • rooms
             </p>
-            <h1 className="max-w-[9ch] text-[clamp(3.6rem,7vw,6.6rem)] leading-[0.92] tracking-[-0.05em] text-[var(--color-olive)]">
-              Find the room that fits how you want to stay.
+            <h1 className="retro-title retro-ink max-w-[8ch]">
+              Three stays. Three moods. Three ways to live the story.
             </h1>
           </div>
 
-          <div className="flex flex-col justify-end">
-            <p className="body-copy max-w-2xl">
-              Each room has its own atmosphere, layout, and practical value.
-              This page should feel like a premium room catalogue — clear,
-              spacious, and easy to compare for short stays, long stays,
-              student-friendly living, and pet-friendly stays.
+          <div className="flex items-end">
+            <p className="body-copy max-w-2xl lg:justify-self-end">
+              The rooms page should feel like a room catalogue with personality,
+              not a generic booking list. Each room has its own tone, rhythm,
+              and reason for being chosen.
             </p>
-
-            <div className="mt-8 flex flex-wrap gap-3">
-              {roomFilters.map((filter) => {
-                const isActive = activeFilter === filter.value;
-
-                return (
-                  <button
-                    key={filter.value}
-                    type="button"
-                    onClick={() => setActiveFilter(filter.value)}
-                    className={clsx(
-                      "border px-4 py-3 text-sm uppercase tracking-[0.14em] transition-colors duration-200",
-                      isActive
-                        ? "border-black/12 bg-black/[0.05] text-[var(--color-olive)]"
-                        : "border-black/8 bg-transparent text-[var(--color-olive-soft)] hover:bg-black/[0.025] hover:text-[var(--color-olive)]",
-                    )}
-                  >
-                    {filter.label}
-                  </button>
-                );
-              })}
-            </div>
           </div>
-        </header>
+        </section>
 
-        <div className="flex items-center justify-between border-b border-black/8 py-4 text-sm uppercase tracking-[0.14em] text-[var(--color-olive-soft)]">
-          <p>{filteredRooms.length} rooms in this view</p>
-          <p>Hosted home stay • direct booking enquiry</p>
-        </div>
-
-        <div>
-          {filteredRooms.map((room, index) => (
-            <article
-              key={room.id}
+        <section className="mt-6 grid gap-6 xl:grid-cols-[0.72fr_1.28fr]">
+          <div className="grid gap-3">
+            <div
+              className="retro-panel-thick retro-block-yellow p-5 md:p-6"
               data-card
-              className="border-b border-black/8 py-8 xl:py-10"
             >
-              <div className="grid gap-8 xl:grid-cols-[0.12fr_0.48fr_0.4fr] xl:gap-10">
-                <div className="flex items-start justify-between border-b border-black/8 pb-4 xl:block xl:border-b-0 xl:pb-0">
-                  <span className="text-[clamp(2.8rem,5vw,4.4rem)] leading-none tracking-[-0.05em] text-[var(--color-olive)]">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
+              <p className="retro-kicker mb-3 text-[var(--color-ink)]">
+                chapter 14.1
+              </p>
+              <h2 className="retro-subtitle retro-ink max-w-[10ch]">
+                Pick the room that best matches the way you want to stay.
+              </h2>
+              <p className="body-copy mt-4 max-w-xl text-[var(--color-ink)]/82">
+                Some guests want a quieter room. Some want more space. Some want
+                a practical base for student or longer-stay living.
+              </p>
+            </div>
 
-                  <div className="text-right xl:mt-6 xl:text-left">
-                    <p className="eyebrow mb-1 text-[var(--color-olive-soft)]">
-                      from
-                    </p>
-                    <p className="text-lg text-[var(--color-olive)]">
-                      R{room.priceFrom}
-                    </p>
-                  </div>
+            <div className="retro-panel-thick p-5 md:p-6" data-card>
+              <p className="retro-kicker mb-3 text-[var(--color-olive-soft)]">
+                filter the collection
+              </p>
+
+              <div className="flex flex-wrap gap-3">
+                {roomFilters.map((filter, index) => {
+                  const isActive = activeFilter === filter.value;
+                  const toneClass = toneClasses[index % toneClasses.length];
+
+                  return (
+                    <button
+                      key={filter.value}
+                      type="button"
+                      onClick={() => setActiveFilter(filter.value)}
+                      className={clsx(
+                        "border px-4 py-3 text-sm uppercase tracking-[0.14em] transition-colors duration-200",
+                        isActive
+                          ? `border-black/15 ${toneClass || "bg-black/[0.03]"}`
+                          : "border-black/10 bg-transparent text-[var(--color-olive-soft)] hover:bg-black/[0.03] hover:text-[var(--color-olive)]",
+                      )}
+                    >
+                      {filter.label}
+                    </button>
+                  );
+                })}
+              </div>
+
+              <div className="mt-6 grid gap-0 border-t border-black/15">
+                <div className="border-b border-black/15 py-4">
+                  <p className="retro-kicker text-[var(--color-olive-soft)]">
+                    current view
+                  </p>
+                  <p className="mt-2 text-lg text-[var(--color-olive)]">
+                    {filteredRooms.length} room
+                    {filteredRooms.length === 1 ? "" : "s"} shown
+                  </p>
                 </div>
 
-                <div className="grid gap-6">
-                  <div className="grid gap-6 border-b border-black/8 pb-6 lg:grid-cols-[1fr_auto] lg:items-end">
-                    <div>
-                      <p className="eyebrow mb-3 text-[var(--color-olive-soft)]">
-                        {room.stayTypes.join(" • ")}
-                      </p>
-                      <h2 className="text-[clamp(2.4rem,4vw,4.5rem)] leading-[0.95] tracking-[-0.05em] text-[var(--color-olive)]">
-                        {room.name}
-                      </h2>
-                      <p className="mt-4 max-w-2xl text-lg leading-8 text-[var(--color-olive)]/82">
-                        {room.tagline}
-                      </p>
-                    </div>
-
-                    <div className="grid gap-3 text-sm uppercase tracking-[0.14em] text-[var(--color-olive-soft)] lg:min-w-[11rem] lg:text-right">
-                      <span>Up to {room.guests} guests</span>
-                      <span>{room.size}</span>
-                      <span>{room.bed}</span>
-                    </div>
-                  </div>
-
-                  <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
-                    <div>
-                      <p className="body-copy max-w-xl">{room.description}</p>
-                    </div>
-
-                    <div className="grid gap-4 sm:grid-cols-2">
-                      <div className="border border-black/8 p-4">
-                        <p className="eyebrow mb-2 text-[var(--color-olive-soft)]">
-                          ideal for
-                        </p>
-                        <p className="text-base leading-7 text-[var(--color-olive)]">
-                          {room.idealFor}
-                        </p>
-                      </div>
-
-                      <div className="border border-black/8 p-4">
-                        <p className="eyebrow mb-2 text-[var(--color-olive-soft)]">
-                          stay type
-                        </p>
-                        <p className="text-base leading-7 text-[var(--color-olive)]">
-                          {room.stayTypes[0]}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
-                    {room.amenities.slice(0, 6).map((item) => (
-                      <div
-                        key={item}
-                        className="border-t border-black/8 py-3 text-sm leading-6 text-[var(--color-olive)]/82"
-                      >
-                        {item}
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="flex flex-wrap gap-3 pt-2">
-                    <Link
-                      href={`/rooms/${room.slug}`}
-                      className="button-primary"
-                    >
-                      View room
-                    </Link>
-                    <Link
-                      href={`/booking?room=${room.slug}`}
-                      className="button-secondary"
-                    >
-                      Check availability
-                    </Link>
-                  </div>
-                </div>
-
-                <div className="grid gap-4 lg:grid-cols-[1fr_0.42fr]">
-                  <div
-                    className="frame-media min-h-[24rem] xl:min-h-[30rem]"
-                    data-parallax-wrap
-                  >
-                    <Image
-                      src={room.gallery[0]}
-                      alt={room.name}
-                      fill
-                      data-parallax
-                      className="object-cover"
-                      sizes="(max-width: 1280px) 100vw, 34vw"
-                    />
-                  </div>
-
-                  <div className="grid gap-4">
-                    <div
-                      className="frame-media min-h-[14rem] xl:min-h-[14.5rem]"
-                      data-parallax-wrap
-                    >
-                      <Image
-                        src={room.gallery[1]}
-                        alt={`${room.name} detail one`}
-                        fill
-                        data-parallax
-                        className="object-cover"
-                        sizes="(max-width: 1280px) 100vw, 18vw"
-                      />
-                    </div>
-
-                    <div
-                      className="frame-media min-h-[14rem] xl:min-h-[14.5rem]"
-                      data-parallax-wrap
-                    >
-                      <Image
-                        src={room.gallery[2]}
-                        alt={`${room.name} detail two`}
-                        fill
-                        data-parallax
-                        className="object-cover"
-                        sizes="(max-width: 1280px) 100vw, 18vw"
-                      />
-                    </div>
-                  </div>
+                <div className="py-4">
+                  <p className="retro-kicker text-[var(--color-olive-soft)]">
+                    booking style
+                  </p>
+                  <p className="mt-2 text-lg text-[var(--color-olive)]">
+                    Direct enquiry • hosted home stay
+                  </p>
                 </div>
               </div>
-            </article>
-          ))}
-        </div>
-
-        <section className="grid gap-8 border-b border-black/8 py-10 xl:grid-cols-[1fr_auto] xl:items-end">
-          <div>
-            <p className="eyebrow mb-4 text-[var(--color-olive-soft)]">
-              need help choosing
-            </p>
-            <h2 className="max-w-[12ch] text-[clamp(2.6rem,4.5vw,4.8rem)] leading-[0.95] tracking-[-0.05em] text-[var(--color-olive)]">
-              Not sure which room suits your stay best?
-            </h2>
-            <p className="body-copy mt-5 max-w-2xl">
-              We can guide guests based on budget, number of people, stay
-              length, student suitability, and pet-friendly needs.
-            </p>
+            </div>
           </div>
 
-          <div className="flex flex-wrap gap-3">
-            <Link href="/contact" className="button-secondary">
-              Ask a question
-            </Link>
-            <Link href="/booking" className="button-primary">
-              Start booking
-            </Link>
+          <div className="grid gap-6">
+            {filteredRooms.map((room, index) => {
+              const toneClass = toneClasses[index % toneClasses.length];
+
+              return (
+                <article
+                  key={room.slug}
+                  className="retro-panel-thick overflow-hidden"
+                  data-card
+                >
+                  <div className="grid gap-0 lg:grid-cols-[0.66fr_1.34fr]">
+                    <div
+                      className={`p-5 md:p-6 ${toneClass || "bg-transparent"}`}
+                    >
+                      <p className="retro-kicker mb-3 text-[var(--color-ink)]/70">
+                        chapter 14.{index + 2}
+                      </p>
+
+                      <div className="retro-number text-[var(--color-ink)]">
+                        {String(index + 1).padStart(2, "0")}.
+                      </div>
+
+                      <h2 className="mt-4 text-[clamp(2.2rem,3.2vw,3.6rem)] leading-[0.95] tracking-[-0.05em] text-[var(--color-ink)]">
+                        {room.name}
+                      </h2>
+
+                      <p className="mt-4 text-base leading-7 text-[var(--color-ink)]/82">
+                        {room.tagline}
+                      </p>
+
+                      <div className="mt-6 grid gap-0 border-t border-black/15">
+                        <div className="border-b border-black/15 py-4">
+                          <p className="retro-kicker text-[var(--color-ink)]/65">
+                            stay types
+                          </p>
+                          <p className="mt-2 text-lg text-[var(--color-ink)]">
+                            {room.stayTypes.join(" • ")}
+                          </p>
+                        </div>
+
+                        <div className="border-b border-black/15 py-4">
+                          <p className="retro-kicker text-[var(--color-ink)]/65">
+                            ideal for
+                          </p>
+                          <p className="mt-2 text-lg text-[var(--color-ink)]">
+                            {room.idealFor}
+                          </p>
+                        </div>
+
+                        <div className="py-4">
+                          <p className="retro-kicker text-[var(--color-ink)]/65">
+                            from
+                          </p>
+                          <p className="mt-2 text-lg text-[var(--color-ink)]">
+                            R{room.priceFrom}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="grid gap-0">
+                      <div className="grid gap-0 lg:grid-cols-[1.15fr_0.85fr]">
+                        <div
+                          className="retro-photo-frame min-h-[22rem] border-0 border-b border-r border-black/15 lg:min-h-[30rem]"
+                          data-soft-image
+                        >
+                          <Image
+                            src={room.gallery[0]}
+                            alt={room.name}
+                            fill
+                            className="object-cover"
+                            sizes="(max-width: 1280px) 100vw, 42vw"
+                          />
+                        </div>
+
+                        <div className="grid gap-0">
+                          <div
+                            className="retro-photo-frame min-h-[11rem] border-0 border-b border-black/15 lg:min-h-[15rem]"
+                            data-soft-image
+                          >
+                            <Image
+                              src={room.gallery[1]}
+                              alt={`${room.name} detail one`}
+                              fill
+                              className="object-cover"
+                              sizes="(max-width: 1280px) 100vw, 22vw"
+                            />
+                          </div>
+
+                          <div
+                            className="retro-photo-frame min-h-[11rem] border-0 border-black/15 lg:min-h-[15rem]"
+                            data-soft-image
+                          >
+                            <Image
+                              src={room.gallery[2]}
+                              alt={`${room.name} detail two`}
+                              fill
+                              className="object-cover"
+                              sizes="(max-width: 1280px) 100vw, 22vw"
+                            />
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="p-5 md:p-6">
+                        <div className="grid gap-0 border-t border-black/15">
+                          <div className="grid gap-4 border-b border-black/15 py-4 md:grid-cols-[0.22fr_0.78fr]">
+                            <p className="retro-kicker text-[var(--color-olive-soft)]">
+                              about
+                            </p>
+                            <p className="body-copy max-w-none">
+                              {room.description}
+                            </p>
+                          </div>
+
+                          <div className="grid gap-4 border-b border-black/15 py-4 md:grid-cols-[0.22fr_0.78fr]">
+                            <p className="retro-kicker text-[var(--color-olive-soft)]">
+                              details
+                            </p>
+                            <p className="text-base leading-7 text-[var(--color-olive)]/82">
+                              Up to {room.guests} guests • {room.size} •{" "}
+                              {room.bed}
+                            </p>
+                          </div>
+
+                          <div className="grid gap-4 py-4 md:grid-cols-[0.22fr_0.78fr]">
+                            <p className="retro-kicker text-[var(--color-olive-soft)]">
+                              features
+                            </p>
+                            <div className="grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
+                              {room.amenities.slice(0, 6).map((item) => (
+                                <div
+                                  key={item}
+                                  className="border-t border-black/15 py-2 text-sm leading-6 text-[var(--color-olive)]/82"
+                                >
+                                  {item}
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="mt-6 flex flex-wrap gap-3">
+                          <Link
+                            href={`/rooms/${room.slug}`}
+                            className="button-secondary"
+                          >
+                            View room
+                          </Link>
+                          <Link
+                            href={`/booking?room=${room.slug}`}
+                            className="button-primary"
+                          >
+                            Check availability
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        </section>
+
+        <section className="mt-6 retro-marquee" data-reveal>
+          <div className="retro-marquee-track">
+            {Array.from({ length: 2 }).map((_, i) => (
+              <div key={i} className="flex">
+                {[
+                  "Garden Room",
+                  "Courtyard Suite",
+                  "Studio Room",
+                  "Short stay",
+                  "Long stay",
+                  "Student-friendly",
+                  "Pet-friendly by approval",
+                  "Hosted home comfort",
+                ].map((item) => (
+                  <span key={`${i}-${item}`} className="retro-marquee-item">
+                    {item}
+                  </span>
+                ))}
+              </div>
+            ))}
           </div>
         </section>
       </div>
-    </section>
+    </main>
   );
 }

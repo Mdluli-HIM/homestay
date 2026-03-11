@@ -26,19 +26,19 @@ export const rooms: Room[] = [
     name: "Garden Room",
     slug: "garden-room",
     tagline:
-      "Soft, calm, and ideal for quiet short stays or focused student living.",
+      "A quieter room for solo guests, couples, and students who want a calm, settled atmosphere.",
     description:
-      "A warm room with natural light, comfortable bedding, simple storage, and a peaceful atmosphere for solo guests or couples who want a grounded home-like stay.",
+      "The Garden Room is one of the softer spaces in the house — comfortable, light-filled, and easy to live in for both shorter visits and longer stays.",
     longDescription:
-      "This room is designed for guests who want the feeling of retreat without losing the comfort of everyday living. It feels gentle, quiet, and settled — ideal for reading, studying, resting, or simply staying in a space that feels thoughtfully cared for.",
+      "This room is designed for guests who want the feeling of retreat without losing the comfort of everyday living. It feels gentle, practical, and settled, making it well suited to reading, studying, resting, or simply having a quieter base in Cape Town.",
     narrative:
-      "The Garden Room is one of the calmest expressions of the house — light-filled, modestly luxurious, and deeply home-oriented. It suits guests who want peace, privacy, and a soft visual atmosphere.",
+      "The Garden Room suits guests who want peace, privacy, and a more grounded rhythm. It is especially strong for solo guests, students, and anyone looking for a room that feels simple, warm, and cared for.",
     priceFrom: 480,
     guests: 2,
     size: "18 m²",
     bed: "Queen bed",
     stayTypes: ["Short stay", "Long stay", "Student-friendly"],
-    idealFor: "Solo guests, students, quiet stays",
+    idealFor: "Solo guests, students, quieter stays",
     amenities: [
       "Natural light",
       "Storage space",
@@ -52,7 +52,7 @@ export const rooms: Room[] = [
       "Access to the shared kitchen and dishes",
       "Comfortable use of communal home spaces",
       "Bathroom access as part of the hosted stay setup",
-      "Laundry discount available for in-house guests",
+      "Discounted on-site laundry for in-house guests",
     ],
     careNotes: [
       "Weekly cleaning included for longer stays",
@@ -71,22 +71,22 @@ export const rooms: Room[] = [
   },
   {
     id: "room-02",
-    name: "Family Suite",
-    slug: "family-suite",
+    name: "Courtyard Suite",
+    slug: "courtyard-suite",
     tagline:
-      "Roomier and more flexible for couples, small families, or longer stays.",
+      "A roomier option for couples, longer stays, and guests who want more breathing room.",
     description:
-      "Designed for guests who want more space and a more settled experience, with a practical layout that works well for extended stays and shared living.",
+      "The Courtyard Suite has a broader sense of ease — more room to settle, a more generous layout, and a stronger feeling of being able to stay comfortably over time.",
     longDescription:
-      "The Family Suite is for guests who want a room with a broader sense of ease — more breathing room, more flexibility, and a stronger feeling of being able to fully settle in. It balances boutique presentation with practical day-to-day living.",
+      "This suite is for guests who want a room with a little more spatial ease and flexibility. It works well for couples, guests staying a little longer, and anyone who values a more expansive room while still enjoying the hosted-home atmosphere.",
     narrative:
-      "This room feels generous and grounded. It is especially suitable for guests who are staying longer, sharing the room with another person, or simply prefer a more expansive layout with a premium domestic feel.",
+      "The Courtyard Suite balances a boutique feel with everyday practicality. It is one of the strongest options for guests who want the home comfort of the house but need more room to settle into a longer rhythm.",
     priceFrom: 650,
     guests: 3,
     size: "24 m²",
     bed: "King bed",
     stayTypes: ["Short stay", "Long stay", "Pet-friendly"],
-    idealFor: "Couples, small families, longer stays",
+    idealFor: "Couples, longer stays, guests wanting more space",
     amenities: [
       "Extra floor space",
       "Pet-friendly option",
@@ -100,7 +100,7 @@ export const rooms: Room[] = [
       "Shared kitchen and dishes available",
       "Easy access to core home amenities",
       "Hosted environment with a lived-in sense of comfort",
-      "Laundry service benefit for guests staying in-house",
+      "Discounted laundry available for guests staying in-house",
     ],
     careNotes: [
       "Weekly cleaning support for longer stays",
@@ -122,13 +122,13 @@ export const rooms: Room[] = [
     name: "Studio Room",
     slug: "studio-room",
     tagline:
-      "A practical premium option for students, workers, and independent guests.",
+      "A flexible room for students, independent guests, and practical longer-stay living.",
     description:
-      "A balanced stay with comfort, clean design, and easy access to the shared home amenities, perfect for guests who want flexibility and value.",
+      "The Studio Room is built around versatility — clean, comfortable, and easy to use as a base for study, work, or day-to-day living.",
     longDescription:
-      "The Studio Room is shaped around versatility. It is clean, efficient, and comfortable, but still carries the warmth of the larger home. It works especially well for guests who need a reliable base for study, work, or day-to-day living.",
+      "This room is shaped around practical comfort. It is especially suitable for guests who need a reliable, adaptable space with a more independent feel, while still being part of the hosted-home atmosphere.",
     narrative:
-      "This room is ideal for guests who appreciate practical quality — a room that feels polished and cared for, while staying adaptable enough for longer living or more independent routines.",
+      "The Studio Room is for guests who appreciate clarity and usefulness. It is polished without being formal, and flexible enough for students, remote workers, and guests who want a room that supports routine.",
     priceFrom: 540,
     guests: 2,
     size: "20 m²",
@@ -174,23 +174,23 @@ export const stayHighlights = [
   },
   {
     title: "Weekly cleaning",
-    text: "Longer stays include weekly cleaning support, freshening the space and helping guests feel settled and cared for.",
+    text: "Longer stays include weekly cleaning support so the room continues to feel fresh, cared for, and easy to live in.",
   },
   {
-    title: "Fresh sheets & care",
-    text: "Linen changes and basic housekeeping support keep the stay feeling clean, calm, and thoughtfully managed.",
+    title: "Fresh linen support",
+    text: "Linen care and sheet changes help the stay feel more thoughtful and more comfortable over time.",
   },
   {
-    title: "Student & pet friendly",
-    text: "The accommodation is flexible enough for students, practical for longer living, and welcoming for approved pets.",
+    title: "Student-friendly living",
+    text: "The house works well for students who want a practical, calmer, and more supportive living setup.",
   },
   {
-    title: "On-site laundry",
-    text: "Guests get discounted access to the on-site laundry, while the wider community can also use the service.",
+    title: "Pet-friendly approval",
+    text: "Approved pets are welcome, which makes the stay more flexible for guests travelling or living with animals.",
   },
   {
-    title: "Short or long stays",
-    text: "Whether guests need a few nights or a longer home base, the stay is structured to support both.",
+    title: "Discounted guest laundry",
+    text: "Guests receive discounted use of the on-site laundry, which becomes especially valuable for longer stays.",
   },
 ];
 
